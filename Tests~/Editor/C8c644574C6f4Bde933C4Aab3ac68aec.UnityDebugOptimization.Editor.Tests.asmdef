@@ -1,0 +1,14 @@
+{
+    "name": "C8c644574C6f4Bde933C4Aab3ac68aec.UnityDebugOptimization.Editor.Tests",
+    "references": [
+        "C8c644574C6f4Bde933C4Aab3ac68aec.UnityDebugOptimization.Editor",
+        "C8c644574C6f4Bde933C4Aab3ac68aec.UnityDebugOptimization"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
