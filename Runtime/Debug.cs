@@ -1,10 +1,18 @@
-﻿using System;
+#if !DEVELOPMENT_BUILD && !FORCE_LOGGING
+
+using System;
 using System.Diagnostics;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 public static class Debug
 {
+    public static ILogger s_Logger = UnityEngine.Debug.unityLogger;
+    public static ILogger unityLogger
+    {
+        get { return UnityEngine.Debug.unityLogger; }
+    }
+    
     [Conditional("UNITY_EDITOR")]
     public static void Break() =>
         UnityEngine.Debug.Break();
@@ -80,4 +88,135 @@ public static class Debug
     [Conditional("UNITY_EDITOR")]
     public static void LogWarning(object message, Object context) => 
         UnityEngine.Debug.LogWarning(message,context);
+    
+    [Conditional("UNITY_EDITOR")]
+    public static void LogWarningFormat(string format, params object[] args)
+    {
+        UnityEngine.Debug.LogWarningFormat(format, args);
+    }
+
+    [Conditional("UNITY_EDITOR")]
+    public static void LogWarningFormat(Object context, string format, params object[] args)
+    {
+        UnityEngine.Debug.LogWarningFormat(context, format, args);
+    }
+    
+    [Conditional("UNITY_EDITOR")]
+    public static void LogFormat(string message, params object[] args) {
+        UnityEngine.Debug.LogFormat(message, args);
+    }
+
+    [Conditional("UNITY_EDITOR")]
+    public static void LogErrorFormat(string message, params object[] args) {
+        UnityEngine.Debug.LogErrorFormat(message, args);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void Assert(bool condition)
+    {
+        UnityEngine.Debug.Assert(condition);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void Assert(bool condition, Object context)
+    {
+        UnityEngine.Debug.Assert(condition, context);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void Assert(bool condition, object message)
+    {
+        UnityEngine.Debug.Assert(condition, message);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void Assert(bool condition, string message)
+    {
+        UnityEngine.Debug.Assert(condition, message);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void Assert(bool condition, object message, Object context)
+    {
+        UnityEngine.Debug.Assert(condition, message, context);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void Assert(bool condition, string message, Object context)
+    {
+        UnityEngine.Debug.Assert(condition, message, context);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void AssertFormat(bool condition, string format, params object[] args)
+    {
+        UnityEngine.Debug.AssertFormat(condition, format, args);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void AssertFormat(
+        bool condition,
+        Object context,
+        string format,
+        params object[] args)
+    {
+        UnityEngine.Debug.AssertFormat(condition, context, format, args);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void LogAssertion(object message)
+    {
+        UnityEngine.Debug.LogAssertion(message);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void LogAssertion(object message, Object context)
+    {
+        UnityEngine.Debug.LogAssertion(message, context);
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void LogAssertionFormat(string format, params object[] args)
+    {
+        UnityEngine.Debug.LogAssertionFormat(format, args);
+    }
+    
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    public static void LogAssertionFormat(Object context, string format, params object[] args)
+    {
+        UnityEngine.Debug.LogAssertionFormat(context, format, args);
+    }
+    
+    public static bool isDebugBuild
+    {
+        get { return UnityEngine.Debug.isDebugBuild; }
+    }
+
+    [Conditional("UNITY_ASSERTIONS")]
+    [Conditional("UNITY_EDITOR")]
+    [Obsolete("Assert(bool, string, params object[]) is obsolete. Use AssertFormat(bool, string, params object[]) (UnityUpgradable) -> AssertFormat(*)", true)]
+    public static void Assert(bool condition, string format, params object[] args)
+    {
+        UnityEngine.Debug.Assert(condition, format, args);
+    }
+
+    [Obsolete("Debug.logger is obsolete. Please use Debug.unityLogger instead (UnityUpgradable) -> unityLogger")]
+    public static ILogger logger
+    {
+        get { return UnityEngine.Debug.logger; }
+    }
 }
+
+#endif
