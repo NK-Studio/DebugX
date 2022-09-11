@@ -1,7 +1,7 @@
 {
 	"name": "com.unity.nkstudio.unitydebugoptimization",
 	"displayName":"Unity Debug Optimization",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"unity": "2018.4",
 	"description": "유니티에서 Debug.log은 빌드시에도 어플리케이션에 영향을 미칩니다. 해당 에셋은 빌드 단계에서 Debug관련 로직을 제외시켜 최적화를 돕습니다."
 }
