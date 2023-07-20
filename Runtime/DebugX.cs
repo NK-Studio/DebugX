@@ -1,18 +1,24 @@
 #if !DEVELOPMENT_BUILD && !FORCE_LOGGING
-
 using System;
 using System.Diagnostics;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public static class DebugX
+/// <summary>
+/// [Obsolete]
+/// <para>No more using DebugX, use Logger.</para>
+/// </summary>
+///
+// ReSharper disable once ClassNeverInstantiated.Global
+public class DebugX : Logger
+{
+}
+
+public class Logger
 {
     public static ILogger s_Logger = UnityEngine.Debug.unityLogger;
-    public static ILogger unityLogger
-    {
-        get { return UnityEngine.Debug.unityLogger; }
-    }
-    
+    public static ILogger unityLogger => UnityEngine.Debug.unityLogger;
+
     [Conditional("UNITY_EDITOR")]
     public static void Break() =>
         UnityEngine.Debug.Break();
@@ -58,7 +64,7 @@ public static class DebugX
         UnityEngine.Debug.DrawRay(start, dir, color, duration, depthTest);
 
     [Conditional("UNITY_EDITOR")]
-    public static void Log(object message) => 
+    public static void Log(object message) =>
         UnityEngine.Debug.Log(message);
 
     [Conditional("UNITY_EDITOR")]
@@ -78,17 +84,17 @@ public static class DebugX
         UnityEngine.Debug.LogException(exception);
 
     [Conditional("UNITY_EDITOR")]
-    public static void LogException(Exception exception, Object context) => 
-        UnityEngine.Debug.LogException(exception,context);
+    public static void LogException(Exception exception, Object context) =>
+        UnityEngine.Debug.LogException(exception, context);
 
     [Conditional("UNITY_EDITOR")]
-    public static void LogWarning(object message) => 
+    public static void LogWarning(object message) =>
         UnityEngine.Debug.LogWarning(message);
 
     [Conditional("UNITY_EDITOR")]
-    public static void LogWarning(object message, Object context) => 
-        UnityEngine.Debug.LogWarning(message,context);
-    
+    public static void LogWarning(object message, Object context) =>
+        UnityEngine.Debug.LogWarning(message, context);
+
     [Conditional("UNITY_EDITOR")]
     public static void LogWarningFormat(string format, params object[] args)
     {
@@ -100,14 +106,16 @@ public static class DebugX
     {
         UnityEngine.Debug.LogWarningFormat(context, format, args);
     }
-    
+
     [Conditional("UNITY_EDITOR")]
-    public static void LogFormat(string message, params object[] args) {
+    public static void LogFormat(string message, params object[] args)
+    {
         UnityEngine.Debug.LogFormat(message, args);
     }
 
     [Conditional("UNITY_EDITOR")]
-    public static void LogErrorFormat(string message, params object[] args) {
+    public static void LogErrorFormat(string message, params object[] args)
+    {
         UnityEngine.Debug.LogErrorFormat(message, args);
     }
 
@@ -191,14 +199,14 @@ public static class DebugX
     {
         UnityEngine.Debug.LogAssertionFormat(format, args);
     }
-    
+
     [Conditional("UNITY_ASSERTIONS")]
     [Conditional("UNITY_EDITOR")]
     public static void LogAssertionFormat(Object context, string format, params object[] args)
     {
         UnityEngine.Debug.LogAssertionFormat(context, format, args);
     }
-    
+
     public static bool isDebugBuild
     {
         get { return UnityEngine.Debug.isDebugBuild; }
@@ -206,7 +214,9 @@ public static class DebugX
 
     [Conditional("UNITY_ASSERTIONS")]
     [Conditional("UNITY_EDITOR")]
-    [Obsolete("Assert(bool, string, params object[]) is obsolete. Use AssertFormat(bool, string, params object[]) (UnityUpgradable) -> AssertFormat(*)", true)]
+    [Obsolete(
+        "Assert(bool, string, params object[]) is obsolete. Use AssertFormat(bool, string, params object[]) (UnityUpgradable) -> AssertFormat(*)",
+        true)]
     public static void Assert(bool condition, string format, params object[] args)
     {
         UnityEngine.Debug.Assert(condition, format, args);
