@@ -6,8 +6,6 @@ Debug 클래스를 래핑하여 적용되기 때문에 빌드시 자동적으로
 ## Unity Package
 ###### [Download Install](https://github.com/NK-Studio/DebugX/releases/tag/1.2.0)
 
-or
-
 ## Git UPM  
 ###### https://github.com/NK-Studio/DebugX.git 을 유니티 패키지에 추가해서 설치할 수 있습니다.
 ---
