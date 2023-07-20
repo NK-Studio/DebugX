@@ -1,4 +1,3 @@
-#if !DEVELOPMENT_BUILD && !FORCE_LOGGING
 using System;
 using System.Diagnostics;
 using UnityEngine;
@@ -231,4 +230,3 @@ namespace UnityEngine
         }
     }
 }
-#endif
