@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace UnityEngine
 {
-    public class DebugX
+    public static class DebugX
     {
         public static ILogger s_Logger = UnityEngine.Debug.unityLogger;
         public static ILogger unityLogger => UnityEngine.Debug.unityLogger;
