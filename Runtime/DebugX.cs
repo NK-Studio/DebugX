@@ -12,11 +12,11 @@ namespace UnityEngine
     /// </summary>
     ///
 // ReSharper disable once ClassNeverInstantiated.Global
-    public class DebugX : Logger
+    public static class DebugX : Logger
     {
     }
 
-    public class Logger
+    public static class Logger
     {
         public static ILogger s_Logger = UnityEngine.Debug.unityLogger;
         public static ILogger unityLogger => UnityEngine.Debug.unityLogger;
