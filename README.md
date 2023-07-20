@@ -1,5 +1,16 @@
 # DebugX (Debug-Optimization)
-사용법은 그냥.. 'Debug.Log' 쓰시던 것을 'Logger.Log'로 사용하시면 됩니다.  
-이전 버전에는 'DebugX.Log'로 사용하도록 하였으나, 로그 트래킹이 불편하여 수정하게 되었습니다.
+Debug 클래스를 래핑하여 적용되기 때문에 빌드시 자동적으로 제외가 됩니다.
 
-클래스를 래핑하여 적용되기 때문에 빌드시 자동적으로 제외가 됩니다.
+---
+<span style=font-size:24px><b>Unity Package</b></span><br>
+<a href="https://github.com/NK-Studio/DebugX/releases/tag/1.2.0"><b>Download Install</b></a>
+<br>
+<br>
+or
+<br>
+<br>
+<span style=font-size:24px><b>Git UPM</b></span><br>
+`https://github.com/NK-Studio/DebugX.git`  을 유니티 패키지 매니저에 +를 누르고 추가합니다.
+---
+사용법은 `Debug.Log` 작성하던 것을 'NKStudio.Logger.Log'로 사용하시면 됩니다.
+UnityPackage로 설치하시는 경우, 권장드리진 않지만 `DebugX.Log`로 줄여서 작성할 수 있습니다.
